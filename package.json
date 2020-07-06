@@ -1,0 +1,82 @@
+{
+  "name": "server-template",
+  "version": "1.0.0",
+  "main": "src/main.ts",
+  "author": "miyagawa",
+  "license": "MIT",
+  "scripts": {
+    "debug": "ts-node ./src/main.ts",
+    "build": "tsc",
+    "clone": "ts-node ./tools/clone.ts",
+    "gen:endpoint": "ts-node ./tools/genAPIStub.ts",
+    "gen:entity": "ts-node ./tools/genEntity.ts",
+    "start": "node ./dist/main.js"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "config": "^3.0.1",
+    "crypto": "^1.0.1",
+    "inversify": "^5.0.1",
+    "koa": "^2.8.1",
+    "koa-basic-auth": "^4.0.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "^0.0.16",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^6.0.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^4.0.2",
+    "log4js-extend": "^0.2.1",
+    "pg": "^8.2.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.2.0",
+    "toml": "^3.0.0",
+    "typeorm": "^0.2.24"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.34",
+    "@types/fs-extra": "^9.0.1",
+    "@types/inversify": "^2.0.33",
+    "@types/jest": "^24.0.25",
+    "@types/koa": "^2.11.3",
+    "@types/koa-basic-auth": "^2.0.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-cors": "^0.0.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.0.1",
+    "@types/readline-sync": "^1.4.3",
+    "@types/uuid": "^7.0.3",
+    "@types/koa-mount": "^4.0.0",
+    "@types/koa-session": "^5.10.2",
+    "@types/koa-static": "^4.0.1",
+    "@types/koa__cors": "^3.0.1",
+    "@types/sqlite3": "^3.1.6",
+    "fs-extra": "^9.0.0",
+    "jest": "^24.9.0",
+    "readline-sync": "^1.4.10",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.0.2",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.1",
+    "uuid": "^8.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "node"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/test/**/*.test.ts"
+    ]
+  }
+}

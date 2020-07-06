@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>SCE App</title>
+<body class="workspace">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<main>
+    <input type="button" id="b2" value="get" onclick="login();">
+    <input type="button" id="b1" value="post" onclick="version();">
+    <p id="result"></p>
+</main>
+<script>
+    var base = "http://localhost:8080"
+    var apiPath = "/api/sleep"
+    var url = base + apiPath;
+    var token = "";
+
+    function get() {
+        fetch(url)
+            .then((r) => r.json())
+            .then((json) => {
+                document.getElementById("result").innerHTML = JSON.stringify(json, null, 2)
+            });
+    }
+
+    function version() {
+        fetch(base + "/api/version", {
+            method : "GET",
+            headers: {
+                "Authorization-Token": token
+            }
+        }).then(r => r.text())
+            .then(j => {
+                console.log(j)
+                document.getElementById("result").innerHTML = j
+            })
+    }
+
+    function login() {
+        fetch(base + "/login", {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, cors, *same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, same-origin, *omit
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            redirect: "follow", // manual, *follow, error
+            referrer: "no-referrer", // no-referrer, *client
+            body: JSON.stringify({
+                user: "9pm",
+                pass: "7am",
+            }), // 本文のデータ型は "Content-Type" ヘッダーと一致する必要があります
+        }).then((r) => r.json())
+            .then((json) => {
+                console.log(json);
+                token = json.token;
+                document.getElementById("result").innerHTML = JSON.stringify(json, null, 2)
+            });
+    }
+</script>
+</body>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+</html>
